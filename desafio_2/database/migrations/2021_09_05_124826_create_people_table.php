@@ -21,6 +21,7 @@ class CreatePeopleTable extends Migration
             $table->string('nickname');
             
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

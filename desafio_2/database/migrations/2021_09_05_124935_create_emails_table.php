@@ -26,6 +26,7 @@ class CreateEmailsTable extends Migration
                 ->onUpdate('cascade');
             
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
