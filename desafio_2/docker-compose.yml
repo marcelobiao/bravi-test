@@ -1,0 +1,60 @@
+version: '3'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: app_bravi
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+       - ./:/var/www
+       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver_bravi
+    tty: true
+    ports:
+      - "8000:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+      
+  #Postgres Service
+  db:
+    image: postgres:9.6
+    container_name: db_bravi
+    volumes:
+      - bravi_dbdata:/data/postgres
+    environment:
+      - POSTGRES_DB=bravi
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - TZ=GMT
+    ports:
+      - 5432:5432
+    networks:
+      - app-network
+
+#Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  bravi_dbdata:
+    driver: local
