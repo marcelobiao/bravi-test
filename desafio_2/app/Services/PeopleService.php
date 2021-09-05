@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\People\PeopleRepository;
+use Exception;
 
 class PeopleService
 {
@@ -20,7 +21,9 @@ class PeopleService
 
     public function getByUuid($uuid)
     {
-        return $this->model->getByUuid($uuid);
+        $people = $this->model->getByUuid($uuid);
+        throw_if(empty($people), new Exception('People not found'));
+        return $people;
     }
 
     public function getById($id)

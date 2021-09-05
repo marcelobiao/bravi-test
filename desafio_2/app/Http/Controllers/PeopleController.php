@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BillingManagement\CreatePeopleRequest;
-use App\Services\MapService;
+use App\Http\Requests\People\CreatePeopleRequest;
 use App\Services\PeopleService;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,8 +53,10 @@ class PeopleController extends Controller
     public function update(CreatePeopleRequest $request, $uuid)
     {
         try {
+            $people = $this->peopleService->getByUuid($uuid);
+
             $data = $request->all();
-            $this->peopleService->update($uuid, $data);
+            $this->peopleService->update($people->id, $data);
 
             return response()->json('People updated');
         }catch (Exception $ex) {
@@ -66,7 +67,9 @@ class PeopleController extends Controller
     public function destroy($uuid)
     {
         try {
-            $this->peopleService->delete($uuid);
+            $people = $this->peopleService->getByUuid($uuid);
+
+            $this->peopleService->delete($people->id);
 
             return response()->json('People removed');
         }catch (Exception $ex) {
