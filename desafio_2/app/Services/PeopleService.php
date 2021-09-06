@@ -21,9 +21,7 @@ class PeopleService
 
     public function getByUuid($uuid)
     {
-        $people = $this->model->getByUuid($uuid);
-        throw_if(empty($people), new Exception('People not found'));
-        return $people;
+        return $this->model->getByUuid($uuid);
     }
 
     public function getById($id)
