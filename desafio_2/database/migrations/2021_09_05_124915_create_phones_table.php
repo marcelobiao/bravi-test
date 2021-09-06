@@ -17,7 +17,8 @@ class CreatePhonesTable extends Migration
             $table->id();
             $table->uuid('uuid');
 
-            $table->integer('number');
+            $table->unsignedBigInteger('number');
+            $table->boolean('isWhatsapp');
             $table->unsignedInteger('people_id');
             $table->foreign('people_id')
                 ->references('id')

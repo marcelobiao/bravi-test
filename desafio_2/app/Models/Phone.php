@@ -13,6 +13,7 @@ class Phone extends Model
     protected $fillable = [
         'number',
         'people_id',
+        'isWhatsapp',
     ];
 
     protected $hidden = [
