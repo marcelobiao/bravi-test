@@ -4,7 +4,7 @@ namespace App\Http\Requests\People;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePeopleRequest extends FormRequest
+class UpdatePeopleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class CreatePeopleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'nickname' => ['required', 'string', 'max:255'],
+            'name' => ['string', 'max:255'],
+            'nickname' => ['string', 'max:255'],
         ];
     }
 }

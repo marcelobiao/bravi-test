@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\People;
+namespace App\Http\Requests\Phone;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePeopleRequest extends FormRequest
+class CreatePhoneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class CreatePeopleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'nickname' => ['required', 'string', 'max:255'],
+            'number' => ['required', 'number', 'min:8', 'max:13'],
+            'isWhatsapp' => ['required', 'boolean'],
         ];
     }
 }

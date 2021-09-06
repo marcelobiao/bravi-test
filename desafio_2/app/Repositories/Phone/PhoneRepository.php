@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Repositories\Phone;
+
+interface PhoneRepository
+{
+    public function getAll();
+
+    public function getByUuid($uuid);
+
+    public function getById($id);
+
+    public function getByFilter(array $filters);
+
+    public function create(array $attributes);
+
+    public function update($id, $attributes);
+
+    public function delete($id);
+
+}
