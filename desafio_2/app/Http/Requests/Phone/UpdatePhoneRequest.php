@@ -24,8 +24,8 @@ class UpdatePhoneRequest extends FormRequest
     public function rules()
     {
         return [
-            'number' => ['numeric', 'min:8', 'max:13'],
-            'isWhatsapp' => ['boolean'],
+            'number' => ['numeric', 'regex:/[0-9]{8,13}/'],
+            'isWhatsapp' => ['boolean']
         ];
     }
 }
