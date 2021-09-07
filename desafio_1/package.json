@@ -1,0 +1,19 @@
+{
+  "name": "desafio1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "jest": "^27.1.0"
+  },
+  "dependencies": {
+    "prompt": "^1.2.0"
+  }
+}
