@@ -14,6 +14,7 @@ class PeopleEloquent implements PeopleRepository
     public function getAll()
     {
         return $this->model
+            ->with(['phones', 'emails'])
             ->orderBy('id', 'Desc')
             ->get();
     }
@@ -21,6 +22,7 @@ class PeopleEloquent implements PeopleRepository
     public function getByUuid($uuid)
     {
         return $this->model
+            ->with(['phones', 'emails'])
             ->where('uuid', $uuid)
             ->orderBy('id', 'Desc')
             ->first();
@@ -29,6 +31,7 @@ class PeopleEloquent implements PeopleRepository
     public function getById($id)
     {
         return $this->model
+            ->with(['phones', 'emails'])
             ->where('id', $id)
             ->orderBy('id', 'Desc')
             ->first();
@@ -37,6 +40,7 @@ class PeopleEloquent implements PeopleRepository
     public function getByFilter(array $filters)
     {
         return $this->model
+            ->with(['phones', 'emails'])
             ->where(function ($query) use ($filters){
                 foreach ($filters as $field => $value) {
                     if($field == 'name' && $value != null){

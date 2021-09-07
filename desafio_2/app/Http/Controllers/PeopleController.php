@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PeopleController extends Controller
 {
+    
     private $peopleService;
 
     public function __construct(PeopleService $peopleService)

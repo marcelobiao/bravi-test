@@ -28,5 +28,13 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\People\PeopleRepository',
             'App\Repositories\People\PeopleEloquent',
         );
+        $this->app->bind(
+            'App\Repositories\Phone\PhoneRepository',
+            'App\Repositories\Phone\PhoneEloquent',
+        );
+        $this->app->bind(
+            'App\Repositories\Email\EmailRepository',
+            'App\Repositories\Email\EmailEloquent',
+        );
     }
 }
