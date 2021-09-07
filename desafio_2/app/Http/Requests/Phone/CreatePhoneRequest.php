@@ -23,7 +23,6 @@ class CreatePhoneRequest extends FormRequest
      */
     public function rules()
     {
-        dd('aq');
         return [
             'number' => ['required', 'numeric', 'min:8', 'max:13'],
             'isWhatsapp' => ['required', 'boolean']

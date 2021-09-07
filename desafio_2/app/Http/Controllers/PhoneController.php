@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Email\CreateEmailRequest;
-use App\Http\Requests\Email\UpdateEmailRequest;
 use App\Http\Requests\Phone\CreatePhoneRequest;
 use App\Http\Requests\Phone\UpdatePhoneRequest;
-use App\Services\EmailService;
 use App\Services\PeopleService;
 use App\Services\PhoneService;
 use Exception;
