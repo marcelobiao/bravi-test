@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -36,5 +37,28 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request, Throwable $exception)
+    {
+        if($request->is("api/*")){
+            if($exception instanceof ValidationException){
+                return response()->json(
+                    [
+                        'message' => $exception->getMessage(),
+                        'errors' => $exception->errors()
+                    ],
+                    $exception->status
+                );
+            }
+        }
+        return parent::render($request, $exception);
     }
 }
